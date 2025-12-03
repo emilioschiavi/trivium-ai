@@ -112,9 +112,32 @@ const WeatherApp = (function () {
      * @param {Event} event - Input change event
      */
     function handlePreferenceChange(event) {
-        // Optional: Could show real-time preview of recommendations
-        // For now, just log the change
-        console.log('Preference changed:', event.target.name, event.target.value);
+        const input = event.target;
+
+        // Visual feedback for numeric inputs
+        if (input.type === 'number') {
+            const value = parseFloat(input.value);
+            const min = parseFloat(input.min);
+            const max = parseFloat(input.max);
+
+            // Validate range
+            if (value < min || value > max) {
+                input.style.borderColor = '#f44336';
+                input.style.backgroundColor = '#ffebee';
+            } else {
+                input.style.borderColor = '#4caf50';
+                input.style.backgroundColor = '#e8f5e9';
+
+                // Reset after a moment
+                setTimeout(function () {
+                    input.style.borderColor = '';
+                    input.style.backgroundColor = '';
+                }, 1500);
+            }
+        }
+
+        // Log change for debugging
+        console.log('Preference changed:', input.name, input.value);
     }
 
     /**

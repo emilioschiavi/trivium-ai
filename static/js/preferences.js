@@ -63,39 +63,39 @@ const PreferencesManager = (function () {
      * @returns {boolean} Validation result
      */
     function validatePreferences(prefs) {
+        const errors = [];
+
         // Temperature validation
         if (prefs.cyclingTempMin >= prefs.cyclingTempMax) {
-            alert('Cycling minimum temperature must be less than maximum');
-            return false;
+            errors.push('🚴 Cycling: Minimum temperature must be less than maximum');
         }
         if (prefs.runningTempMin >= prefs.runningTempMax) {
-            alert('Running minimum temperature must be less than maximum');
-            return false;
+            errors.push('🏃 Running: Minimum temperature must be less than maximum');
         }
 
         // Range validation
         if (prefs.cyclingTempMin < -20 || prefs.cyclingTempMax > 40) {
-            alert('Cycling temperature must be between -20°C and 40°C');
-            return false;
+            errors.push('🚴 Cycling: Temperature must be between -20°C and 40°C');
         }
         if (prefs.runningTempMin < -20 || prefs.runningTempMax > 40) {
-            alert('Running temperature must be between -20°C and 40°C');
-            return false;
+            errors.push('🏃 Running: Temperature must be between -20°C and 40°C');
         }
 
         // Wind validation
         if (prefs.windMax < 0 || prefs.windMax > 100) {
-            alert('Wind threshold must be between 0 and 100 km/h');
-            return false;
+            errors.push('💨 Wind threshold must be between 0 and 100 km/h');
         }
 
         // Rain validation
         if (prefs.cyclingRainMax < 0 || prefs.cyclingRainMax > 50) {
-            alert('Cycling rain threshold must be between 0 and 50 mm/h');
-            return false;
+            errors.push('🚴 Cycling: Rain threshold must be between 0 and 50 mm/h');
         }
         if (prefs.runningRainMax < 0 || prefs.runningRainMax > 50) {
-            alert('Running rain threshold must be between 0 and 50 mm/h');
+            errors.push('🏃 Running: Rain threshold must be between 0 and 50 mm/h');
+        }
+
+        if (errors.length > 0) {
+            alert('❌ Validation Errors:\n\n' + errors.join('\n'));
             return false;
         }
 

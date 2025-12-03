@@ -403,13 +403,13 @@ stateDiagram-v2
 ```
 
 **Tasks:**
-- [ ] Integrate preference system with sport recommendations
-- [ ] Real-time recalculation when preferences change
-- [ ] Persist preferences on every change
-- [ ] Add reset to defaults button
-- [ ] Validate all inputs (ranges, types)
-- [ ] User feedback for invalid inputs
-- [ ] Test preference persistence across page reloads
+- [x] Integrate preference system with sport recommendations
+- [x] Real-time recalculation when preferences change
+- [x] Persist preferences on every change
+- [x] Add reset to defaults button
+- [x] Validate all inputs (ranges, types)
+- [x] User feedback for invalid inputs
+- [x] Test preference persistence across page reloads
 
 **Deliverables:**
 - ✅ Preferences fully integrated
