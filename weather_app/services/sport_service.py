@@ -12,7 +12,7 @@ class SportRecommendationService:
     # Default thresholds for each sport
     DEFAULT_THRESHOLDS = {
         'cycling': {
-            'temp_min': 15,  # °C
+            'temp_min': 0,   # °C
             'temp_max': 25,  # °C
             'wind_max': 30,  # km/h
             'rain_max': 0,   # mm/h
