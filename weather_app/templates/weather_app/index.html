@@ -200,6 +200,9 @@
     </div>
 
     <!-- JavaScript -->
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
     <script>
         // Inject forecast data from Django template for JavaScript access
         window.forecastData = {{ forecast_json | safe }};
@@ -207,6 +210,7 @@
     {% load static %}
     <script src="{% static 'js/preferences.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/charts.js' %}"></script>
 </body>
 
 </html>

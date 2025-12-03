@@ -363,17 +363,17 @@ sequenceDiagram
 ```
 
 **Tasks:**
-- [ ] Add Chart.js CDN to template
-- [ ] Create `static/js/charts.js`:
+- [x] Add Chart.js CDN to template
+- [x] Create `static/js/charts.js`:
   - Temperature chart (line chart, 24 hours)
   - Rain chart (bar chart, 24 hours)
   - Wind chart (line chart, 24 hours)
   - Chart configuration and styling
   - Responsive chart sizing
   - Update chart function
-- [ ] Format data for Chart.js
-- [ ] Add chart legends and labels
-- [ ] Test chart rendering
+- [x] Format data for Chart.js
+- [x] Add chart legends and labels
+- [x] Test chart rendering
 
 **Deliverables:**
 - ✅ Three charts rendering correctly
