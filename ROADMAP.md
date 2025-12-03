@@ -319,20 +319,20 @@ mindmap
 ### Milestone 3.3: JavaScript Core Logic (1 hour)
 
 **Tasks:**
-- [ ] Create `static/js/main.js`:
+- [x] Create `static/js/main.js`:
   - Page initialization
   - Fetch weather data from Django
   - Update UI with weather data
   - Update sport recommendations
   - Event listeners for preference changes
-- [ ] Create `static/js/preferences.js`:
+- [x] Create `static/js/preferences.js`:
   - Load preferences from localStorage
   - Save preferences to localStorage
   - Validate preference inputs
   - Default values object
   - Preference change handlers
-- [ ] Error handling and user feedback
-- [ ] Loading states
+- [x] Error handling and user feedback
+- [x] Loading states
 
 **Deliverables:**
 - ✅ Interactive JavaScript working

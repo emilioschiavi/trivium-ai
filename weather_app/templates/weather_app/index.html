@@ -199,80 +199,14 @@
         {% endif %}
     </div>
 
+    <!-- JavaScript -->
     <script>
-        // Forecast data from Django template
-        const forecastData = {{ forecast_json| safe }};
-
-        // Initialize preferences from localStorage or use defaults
-        function loadPreferences() {
-            const defaults = {
-                cycling: true,
-                running: true,
-                cyclingTempMin: 0,
-                cyclingTempMax: 25,
-                runningTempMin: 10,
-                runningTempMax: 20,
-                windMax: 30,
-                cyclingRainMax: 0,
-                runningRainMax: 3
-            };
-
-            const saved = localStorage.getItem('weatherPreferences');
-            return saved ? JSON.parse(saved) : defaults;
-        }
-
-        // Save preferences to localStorage
-        function savePreferences(prefs) {
-            localStorage.setItem('weatherPreferences', JSON.stringify(prefs));
-        }
-
-        // Load saved preferences on page load
-        window.addEventListener('DOMContentLoaded', function () {
-            const prefs = loadPreferences();
-
-            // Set form values
-            document.getElementById('cyclingEnabled').checked = prefs.cycling;
-            document.getElementById('runningEnabled').checked = prefs.running;
-            document.getElementById('cyclingTempMin').value = prefs.cyclingTempMin;
-            document.getElementById('cyclingTempMax').value = prefs.cyclingTempMax;
-            document.getElementById('runningTempMin').value = prefs.runningTempMin;
-            document.getElementById('runningTempMax').value = prefs.runningTempMax;
-            document.getElementById('windMax').value = prefs.windMax;
-            document.getElementById('cyclingRainMax').value = prefs.cyclingRainMax;
-            document.getElementById('runningRainMax').value = prefs.runningRainMax;
-        });
-
-        // Handle form submission
-        document.getElementById('preferencesForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const prefs = {
-                cycling: document.getElementById('cyclingEnabled').checked,
-                running: document.getElementById('runningEnabled').checked,
-                cyclingTempMin: parseFloat(document.getElementById('cyclingTempMin').value),
-                cyclingTempMax: parseFloat(document.getElementById('cyclingTempMax').value),
-                runningTempMin: parseFloat(document.getElementById('runningTempMin').value),
-                runningTempMax: parseFloat(document.getElementById('runningTempMax').value),
-                windMax: parseFloat(document.getElementById('windMax').value),
-                cyclingRainMax: parseFloat(document.getElementById('cyclingRainMax').value),
-                runningRainMax: parseFloat(document.getElementById('runningRainMax').value)
-            };
-
-            savePreferences(prefs);
-            alert('✅ Preferences saved successfully!');
-
-            // Reload page to apply new preferences
-            location.reload();
-        });
-
-        // Handle reset button
-        document.getElementById('resetBtn').addEventListener('click', function () {
-            if (confirm('Reset all preferences to defaults?')) {
-                localStorage.removeItem('weatherPreferences');
-                location.reload();
-            }
-        });
+        // Inject forecast data from Django template for JavaScript access
+        window.forecastData = {{ forecast_json | safe }};
     </script>
+    {% load static %}
+    <script src="{% static 'js/preferences.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>
