@@ -55,28 +55,28 @@ flowchart LR
 ```
 
 **Tasks:**
-- [ ] Verify Python 3.x installation (`python3 --version`)
-- [ ] Create virtual environment
+- [x] Verify Python 3.x installation (`python3 --version`)
+- [x] Create virtual environment
   ```bash
   python3 -m venv venv
   source venv/bin/activate
   ```
-- [ ] Create `requirements.txt`:
+- [x] Create `requirements.txt`:
   ```
   Django>=4.2
   requests>=2.31.0
   python-decouple>=3.8
   ```
-- [ ] Install dependencies: `pip install -r requirements.txt`
-- [ ] Initialize git repository
-- [ ] Register for OpenWeatherMap API (https://openweathermap.org/api)
-- [ ] Save API key for later use
+- [x] Install dependencies: `pip install -r requirements.txt`
+- [x] Initialize git repository
+- [x] Register for OpenWeatherMap API (https://openweathermap.org/api)
+- [x] Save API key for later use
 
 **Deliverables:**
-- ✅ Working Python environment
+- ✅ Working Python environment (Python 3.14.1)
 - ✅ Virtual environment activated
-- ✅ All dependencies installed
-- ✅ OpenWeatherMap API key obtained
+- ✅ All dependencies installed (Django 5.2.9, requests 2.32.5, python-decouple 3.8)
+- ✅ OpenWeatherMap API key obtained and stored in .env
 
 ---
 
