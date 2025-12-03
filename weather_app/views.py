@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from .services.weather_service import WeatherService
 from .services.sport_service import SportRecommendationService
 import logging
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -40,6 +41,22 @@ def index(request):
         # Fetch 24-hour forecast
         forecast_24h = weather_service.get_forecast_24h()
         context['forecast_24h'] = forecast_24h
+        
+        # Convert forecast data to JSON-serializable format
+        if forecast_24h:
+            forecast_json_data = []
+            for item in forecast_24h:
+                forecast_json_data.append({
+                    'timestamp': item['timestamp'].isoformat() if hasattr(item['timestamp'], 'isoformat') else str(item['timestamp']),
+                    'temperature': item['temperature'],
+                    'wind_speed': item['wind_speed'],
+                    'precipitation': item['precipitation'],
+                    'humidity': item['humidity'],
+                    'description': item['description']
+                })
+            context['forecast_json'] = json.dumps(forecast_json_data)
+        else:
+            context['forecast_json'] = '[]'
         
         # Initialize sport service with default thresholds
         sport_service = SportRecommendationService()

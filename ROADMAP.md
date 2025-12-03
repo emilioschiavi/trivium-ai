@@ -254,15 +254,15 @@ graph TD
 ```
 
 **Tasks:**
-- [ ] Create `templates/index.html`:
+- [x] Create `templates/index.html`:
   - Semantic HTML5 structure
   - Current weather display
   - Sport recommendation cards
   - Three chart containers
   - Preference editor form
   - Mobile-friendly meta tags
-- [ ] Django template tags for dynamic data
-- [ ] Form inputs for preferences
+- [x] Django template tags for dynamic data
+- [x] Form inputs for preferences
 
 **Deliverables:**
 - ✅ Complete HTML structure

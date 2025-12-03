@@ -143,6 +143,166 @@
             padding: 40px;
             color: #666;
         }
+
+        /* Charts Section */
+        .charts-section {
+            margin-bottom: 30px;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .chart-wrapper {
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .chart-wrapper h3 {
+            color: #424242;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        .chart-wrapper canvas {
+            width: 100% !important;
+            height: 250px !important;
+        }
+
+        /* Preferences Section */
+        .preferences-section {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .preferences-section h2 {
+            color: #424242;
+            margin-bottom: 20px;
+        }
+
+        .preferences-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 10px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .input-group label {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .input-group input,
+        .input-group select {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #1976d2;
+            box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.1);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button.primary {
+            background-color: #1976d2;
+            color: white;
+        }
+
+        button.primary:hover {
+            background-color: #1565c0;
+        }
+
+        button.secondary {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+
+        button.secondary:hover {
+            background-color: #d0d0d0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -221,12 +381,195 @@
                 {% endif %}
             </div>
         </div>
+
+        <!-- 24-Hour Forecast Charts Section -->
+        <div class="weather-section charts-section">
+            <h2>24-Hour Forecast</h2>
+            <div class="charts-container">
+                <div class="chart-wrapper">
+                    <h3>🌡️ Temperature</h3>
+                    <canvas id="temperatureChart"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <h3>🌧️ Precipitation</h3>
+                    <canvas id="precipitationChart"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <h3>💨 Wind Speed</h3>
+                    <canvas id="windChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Preferences Section -->
+        <div class="weather-section preferences-section">
+            <h2>⚙️ Preferences</h2>
+            <form class="preferences-form" id="preferencesForm">
+                <!-- Sport Selection -->
+                <div class="form-group">
+                    <label>Select Sports:</label>
+                    <div class="form-row">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="cyclingEnabled" name="cycling" checked>
+                            <label for="cyclingEnabled">🚴 Cycling</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="runningEnabled" name="running" checked>
+                            <label for="runningEnabled">🏃 Running</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cycling Preferences -->
+                <div class="form-group">
+                    <label>Cycling Temperature Range (°C):</label>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="cyclingTempMin">Minimum</label>
+                            <input type="number" id="cyclingTempMin" name="cyclingTempMin" value="0" min="-20" max="40">
+                        </div>
+                        <div class="input-group">
+                            <label for="cyclingTempMax">Maximum</label>
+                            <input type="number" id="cyclingTempMax" name="cyclingTempMax" value="25" min="-20"
+                                max="40">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Running Preferences -->
+                <div class="form-group">
+                    <label>Running Temperature Range (°C):</label>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="runningTempMin">Minimum</label>
+                            <input type="number" id="runningTempMin" name="runningTempMin" value="10" min="-20"
+                                max="40">
+                        </div>
+                        <div class="input-group">
+                            <label for="runningTempMax">Maximum</label>
+                            <input type="number" id="runningTempMax" name="runningTempMax" value="20" min="-20"
+                                max="40">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wind Threshold -->
+                <div class="form-group">
+                    <label>Wind Speed Threshold (km/h):</label>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="windMax">Maximum</label>
+                            <input type="number" id="windMax" name="windMax" value="30" min="0" max="100">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rain Threshold -->
+                <div class="form-group">
+                    <label>Rain Thresholds (mm/h):</label>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="cyclingRainMax">Cycling Max</label>
+                            <input type="number" id="cyclingRainMax" name="cyclingRainMax" value="0" min="0" max="50"
+                                step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="runningRainMax">Running Max</label>
+                            <input type="number" id="runningRainMax" name="runningRainMax" value="3" min="0" max="50"
+                                step="0.1">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="button-group">
+                    <button type="submit" class="primary">💾 Save Preferences</button>
+                    <button type="button" class="secondary" id="resetBtn">🔄 Reset to Defaults</button>
+                </div>
+            </form>
+        </div>
+
         {% else %}
         <div class="loading">
             <p>Loading weather data...</p>
         </div>
         {% endif %}
     </div>
+
+    <script>
+        // Forecast data from Django template
+        const forecastData = {{ forecast_json| safe }};
+
+        // Initialize preferences from localStorage or use defaults
+        function loadPreferences() {
+            const defaults = {
+                cycling: true,
+                running: true,
+                cyclingTempMin: 0,
+                cyclingTempMax: 25,
+                runningTempMin: 10,
+                runningTempMax: 20,
+                windMax: 30,
+                cyclingRainMax: 0,
+                runningRainMax: 3
+            };
+
+            const saved = localStorage.getItem('weatherPreferences');
+            return saved ? JSON.parse(saved) : defaults;
+        }
+
+        // Save preferences to localStorage
+        function savePreferences(prefs) {
+            localStorage.setItem('weatherPreferences', JSON.stringify(prefs));
+        }
+
+        // Load saved preferences on page load
+        window.addEventListener('DOMContentLoaded', function () {
+            const prefs = loadPreferences();
+
+            // Set form values
+            document.getElementById('cyclingEnabled').checked = prefs.cycling;
+            document.getElementById('runningEnabled').checked = prefs.running;
+            document.getElementById('cyclingTempMin').value = prefs.cyclingTempMin;
+            document.getElementById('cyclingTempMax').value = prefs.cyclingTempMax;
+            document.getElementById('runningTempMin').value = prefs.runningTempMin;
+            document.getElementById('runningTempMax').value = prefs.runningTempMax;
+            document.getElementById('windMax').value = prefs.windMax;
+            document.getElementById('cyclingRainMax').value = prefs.cyclingRainMax;
+            document.getElementById('runningRainMax').value = prefs.runningRainMax;
+        });
+
+        // Handle form submission
+        document.getElementById('preferencesForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const prefs = {
+                cycling: document.getElementById('cyclingEnabled').checked,
+                running: document.getElementById('runningEnabled').checked,
+                cyclingTempMin: parseFloat(document.getElementById('cyclingTempMin').value),
+                cyclingTempMax: parseFloat(document.getElementById('cyclingTempMax').value),
+                runningTempMin: parseFloat(document.getElementById('runningTempMin').value),
+                runningTempMax: parseFloat(document.getElementById('runningTempMax').value),
+                windMax: parseFloat(document.getElementById('windMax').value),
+                cyclingRainMax: parseFloat(document.getElementById('cyclingRainMax').value),
+                runningRainMax: parseFloat(document.getElementById('runningRainMax').value)
+            };
+
+            savePreferences(prefs);
+            alert('✅ Preferences saved successfully!');
+
+            // Reload page to apply new preferences
+            location.reload();
+        });
+
+        // Handle reset button
+        document.getElementById('resetBtn').addEventListener('click', function () {
+            if (confirm('Reset all preferences to defaults?')) {
+                localStorage.removeItem('weatherPreferences');
+                location.reload();
+            }
+        });
+    </script>
 </body>
 
 </html>
