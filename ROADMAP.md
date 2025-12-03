@@ -184,21 +184,24 @@ flowchart TD
 ```
 
 **Tasks:**
-- [ ] Create `sport_service.py`:
+- [x] Create `sport_service.py`:
   - Default thresholds:
     - Cycling: 15-25°C, wind < 30km/h, rain = 0mm/h
     - Running: 10-20°C, wind < 30km/h, rain < 3mm/h
   - Sport evaluation logic
   - Recommendation generator
   - Reasoning text generator
-- [ ] Unit tests for recommendation logic
-- [ ] Handle edge cases (no sports recommended)
+- [x] Unit tests for recommendation logic
+- [x] Handle edge cases (no sports recommended)
 
 **Deliverables:**
 - ✅ Sport recommendation logic working
 - ✅ Default thresholds implemented
 - ✅ Reasoning messages generated
 - ✅ Edge cases handled
+- ✅ Comprehensive test suite with 8 test scenarios
+- ✅ Custom threshold support implemented
+- ✅ Forecast recommendation support added
 
 ---
 
