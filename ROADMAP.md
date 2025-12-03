@@ -128,22 +128,24 @@ classDiagram
 ```
 
 **Tasks:**
-- [ ] Create `weather_app/services/` directory
-- [ ] Implement `weather_service.py`:
+- [x] Create `weather_app/services/` directory
+- [x] Implement `weather_service.py`:
   - API client class
   - Get current weather for Reinach BL
   - Get 24-hour forecast
   - Parse API response
   - Error handling (network, rate limit, invalid key)
   - Basic caching (10 minutes)
-- [ ] Test API integration manually
-- [ ] Handle Reinach BL coordinates (lat: 47.4953, lon: 7.5965)
+- [x] Test API integration manually
+- [x] Handle Reinach BL coordinates (lat: 47.4953, lon: 7.5965)
 
 **Deliverables:**
 - ✅ Working OpenWeatherMap integration
-- ✅ Current weather data retrieval
-- ✅ 24-hour forecast data retrieval
-- ✅ Error handling implemented
+- ✅ Current weather data retrieval (temperature, wind, precipitation, humidity)
+- ✅ 24-hour forecast data retrieval (8 x 3-hour intervals)
+- ✅ Error handling implemented (timeout, HTTP errors, rate limits)
+- ✅ 10-minute caching implemented
+- ✅ Test script created and verified
 
 ---
 
