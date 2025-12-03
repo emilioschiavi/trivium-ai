@@ -208,14 +208,14 @@ flowchart TD
 ### Milestone 2.3: Django Views & URLs (45 minutes)
 
 **Tasks:**
-- [ ] Create main view in `views.py`:
+- [x] Create main view in `views.py`:
   - Fetch weather data
   - Get sport recommendations
   - Prepare data for template
   - Handle errors gracefully
-- [ ] Configure URL routing in `urls.py`
-- [ ] Create simple template structure
-- [ ] Test view renders correctly
+- [x] Configure URL routing in `urls.py`
+- [x] Create simple template structure
+- [x] Test view renders correctly
 
 **Deliverables:**
 - ✅ Main view implemented
