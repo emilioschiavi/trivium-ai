@@ -13,6 +13,14 @@ This workspace currently contains a Django web application for weather-based out
 
 **Product Requirements**: All detailed requirements are documented in `PRD.md` in the root directory. Always reference this document when providing suggestions or answering questions about project features, technical architecture, or user requirements.
 
+**Project Roadmap**: The complete development timeline, milestones, and implementation phases are documented in `ROADMAP.md`. Reference this for understanding the project structure, implementation order, and current development phase.
+
+**Architecture Documentation**: System architecture, component designs, and technical diagrams are documented in `ARCHITECTURE.md`. Reference this for understanding system design and data flows.
+
+### Progress Tracking
+- **Automatic Checkbox Updates**: When executing tasks from `ROADMAP.md`, automatically update checkboxes (`- [ ]` to `- [x]`) as tasks are completed, milestones achieved, deliverables verified, and features pass testing.
+- Update the roadmap in real-time to provide a live progress tracker througut development.
+
 ### Key Project Details
 - **Backend**: Django (Python)
 - **Frontend**: HTML, JavaScript, Pure CSS (no frameworks)
