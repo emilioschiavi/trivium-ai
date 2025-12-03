@@ -83,20 +83,22 @@ flowchart LR
 ### Milestone 1.2: Django Project Setup (30 minutes)
 
 **Tasks:**
-- [ ] Create Django project: `django-admin startproject weather_project .`
-- [ ] Create Django app: `python manage.py startapp weather_app`
-- [ ] Configure `settings.py`:
+- [x] Create Django project: `django-admin startproject weather_project .`
+- [x] Create Django app: `python manage.py startapp weather_app`
+- [x] Configure `settings.py`:
   - Add `weather_app` to `INSTALLED_APPS`
   - Configure static files
   - Set up environment variables for API key
-- [ ] Create `.env` file for API key
-- [ ] Create `.gitignore` (include `.env`, `venv/`, `__pycache__/`, etc.)
-- [ ] Test server: `python manage.py runserver`
+- [x] Create `.env` file for API key
+- [x] Create `.gitignore` (include `.env`, `venv/`, `__pycache__/`, etc.)
+- [x] Test server: `python manage.py runserver`
 
 **Deliverables:**
 - ✅ Django project structure created
-- ✅ Development server running
-- ✅ API key stored securely
+- ✅ Development server running at http://127.0.0.1:8000/
+- ✅ API key stored securely in .env file
+- ✅ weather_app added to INSTALLED_APPS
+- ✅ Static files directory configured
 
 ---
 
